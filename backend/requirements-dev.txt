@@ -1,0 +1,4 @@
+-r requirements.txt
+# Only for tests/make_test_model.py (offline stand-in model) and API tests
+onnx>=1.16
+httpx>=0.27

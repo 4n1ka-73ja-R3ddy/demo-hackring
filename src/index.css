@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+
+  /* Lightbox: a cool, neutral working surface so footage colours read true. */
+  --color-paper: #eef1f5;
+  --color-card: #ffffff;
+  --color-ink: #16213a;
+  --color-ink-2: #3a4560;
+  --color-muted: #5f6880;
+  --color-line: #d6dce6;
+  --color-line-2: #e6eaf0;
+
+  /* Edit decisions. These four colours mean the same thing everywhere. */
+  --color-keep: #0f7b6c;
+  --color-keep-soft: #dcf1ec;
+  --color-cut: #9aa3b2;
+  --color-cut-soft: #eceff3;
+  --color-guard: #4b3fd1;
+  --color-guard-soft: #e7e5fb;
+  --color-risk: #b45f00;
+  --color-risk-soft: #fbeedb;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  background: var(--color-paper);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cut footage is hatched, so it stays legible without relying on colour. */
+.hatch {
+  background-image: repeating-linear-gradient(135deg, rgba(22, 33, 58, 0.14) 0 2px, transparent 2px 6px);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-guard);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@keyframes step-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+.step-in { animation: step-in 260ms ease-out both; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.pulse-dot { animation: pulse-dot 1s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .step-in, .pulse-dot { animation: none; }
+  * { transition: none !important; }
+}
